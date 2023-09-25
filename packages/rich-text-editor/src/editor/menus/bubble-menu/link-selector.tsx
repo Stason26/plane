@@ -1,8 +1,15 @@
 import { cn } from "@/lib/utils";
 import { Editor } from "@tiptap/core";
 import { Check, Trash } from "lucide-react";
-import { Dispatch, FC, SetStateAction, useCallback, useEffect, useRef } from "react";
-import isValidHttpUrl from "@/ui/editor/menus/bubble-menu/utils";
+import {
+  Dispatch,
+  FC,
+  SetStateAction,
+  useCallback,
+  useEffect,
+  useRef,
+} from "react";
+import isValidHttpUrl from "@/editor/menus/bubble-menu/utils";
 
 interface LinkSelectorProps {
   editor: Editor;
@@ -10,7 +17,11 @@ interface LinkSelectorProps {
   setIsOpen: Dispatch<SetStateAction<boolean>>;
 }
 
-export const LinkSelector: FC<LinkSelectorProps> = ({ editor, isOpen, setIsOpen }) => {
+export const LinkSelector: FC<LinkSelectorProps> = ({
+  editor,
+  isOpen,
+  setIsOpen,
+}) => {
   const inputRef = useRef<HTMLInputElement>(null);
 
   const onLinkSubmit = useCallback(() => {

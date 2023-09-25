@@ -1,6 +1,6 @@
 import { EditorProps } from "@tiptap/pm/view";
-import { findTableAncestor } from "@/ui/editor/menus/table-menu";
-import { startImageUpload } from "@/ui/editor/plugins/upload-image";
+import { findTableAncestor } from "@/editor/menus/table-menu";
+import { startImageUpload } from "@/editor/plugins/upload-image";
 import { UploadImage } from "@/types/upload-image";
 
 export function TiptapEditorProps(
@@ -33,11 +33,22 @@ export function TiptapEditorProps(
           }
         }
       }
-      if (event.clipboardData && event.clipboardData.files && event.clipboardData.files[0]) {
+      if (
+        event.clipboardData &&
+        event.clipboardData.files &&
+        event.clipboardData.files[0]
+      ) {
         event.preventDefault();
         const file = event.clipboardData.files[0];
         const pos = view.state.selection.from;
-        startImageUpload(file, view, pos, workspaceSlug, uploadFile, setIsSubmitting);
+        startImageUpload(
+          file,
+          view,
+          pos,
+          workspaceSlug,
+          uploadFile,
+          setIsSubmitting
+        );
         return true;
       }
       return false;
@@ -52,7 +63,12 @@ export function TiptapEditorProps(
           }
         }
       }
-      if (!moved && event.dataTransfer && event.dataTransfer.files && event.dataTransfer.files[0]) {
+      if (
+        !moved &&
+        event.dataTransfer &&
+        event.dataTransfer.files &&
+        event.dataTransfer.files[0]
+      ) {
         event.preventDefault();
         const file = event.dataTransfer.files[0];
         const coordinates = view.posAtCoords({
@@ -61,7 +77,14 @@ export function TiptapEditorProps(
         });
         // here we deduct 1 from the pos or else the image will create an extra node
         if (coordinates) {
-          startImageUpload(file, view, coordinates.pos - 1, workspaceSlug, uploadFile, setIsSubmitting);
+          startImageUpload(
+            file,
+            view,
+            coordinates.pos - 1,
+            workspaceSlug,
+            uploadFile,
+            setIsSubmitting
+          );
         }
         return true;
       }
