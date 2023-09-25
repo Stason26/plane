@@ -1,0 +1,40 @@
+{
+  "name": "@plane/editor-core",
+  "version": "0.0.1",
+  "description": "Plane editor core",
+  "main": "./dist/index.mjs",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.mts",
+  "files": [
+    "dist/**/*"
+  ],
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.mts",
+      "import": "./dist/index.mjs",
+      "module": "./dist/index.mjs"
+    }
+  },
+  "scripts": {
+    "build": "tsup",
+    "dev": "tsup --watch",
+    "check-types": "tsc --noEmit"
+  },
+  "peerDependencies": {
+    "react": "^18.2.0"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "@types/react": "^18.2.5",
+    "eslint": "^7.32.0",
+    "tsconfig": "*",
+    "tsup": "^7.2.0",
+    "typescript": "4.9.5"
+  },
+  "keywords": [
+    "editor",
+    "core",
+    "markdown",
+    "react"
+  ]
+}

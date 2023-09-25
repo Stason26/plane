@@ -14,7 +14,9 @@ interface TableMenuItem {
   name: string;
 }
 
-export const findTableAncestor = (node: Node | null): HTMLTableElement | null => {
+export const findTableAncestor = (
+  node: Node | null
+): HTMLTableElement | null => {
   while (node !== null && node.nodeName !== "TABLE") {
     node = node.parentNode;
   }
@@ -97,7 +99,8 @@ export const TableMenu = ({ editor }: { editor: any }) => {
             parent = parent.parentElement;
           }
         } else {
-          const scrollDisabledContainers = document.querySelectorAll(".disable-scroll");
+          const scrollDisabledContainers =
+            document.querySelectorAll(".disable-scroll");
 
           scrollDisabledContainers.forEach((container) => {
             container.classList.remove("disable-scroll");
